@@ -1,6 +1,107 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700);
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker);
 
 @import 'foundation_overrides';
 @import 'zurb-foundation-5/scss/foundation';
 @import 'zurb-foundation-5/scss/foundation/components/_switches';
 @import 'font-awesome/css/font-awesome.min.css';
+
+$brand: #FFA102;
+$brand-blue: #0260ff;
+$brand-green: #02ffa1;
+$brand-red: #ff0260;
+
+a, a:hover, a:focus {
+  color: #606060;
+}
+
+.heading-container {
+  box-shadow: 0 2px 3px $smoke;
+  margin-bottom: 10px;
+}
+
+h1{
+  font-family: 'Permanent Marker', cursive;
+  background: $brand;
+  background: -webkit-linear-gradient(left, #FF9800, #FFE058); // We will need to generate gradient colors to complement the background.
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4em;
+  padding-top: 0.5em;
+  text-shadow: 0 2px 5px RGBA(255, 161, 2, .5);
+
+}
+
+.company-card {
+  .inner {
+    box-shadow: 0px 1px 4px #898989;
+    margin-bottom: 10px;
+  }
+  .intro {
+    padding: 2px;
+    background-color: $brand;
+    margin-bottom: 1px;
+    box-shadow: 0 2px 2px $smoke;
+    position: relative;
+    .url {
+      float: left;
+      margin-left: 5px;
+      h2 {
+        font-size: 2rem;
+      }
+    }
+    .tweet-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 1000px;
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      right: 30px;
+      bottom: -20px;
+      box-shadow: 0 2px 2px $smoke;
+      .fa {
+        background: $brand-blue;
+        font-size: 30px;
+        color: $white;
+        padding: 12px;
+      }
+    }
+    .steps {
+      clear: both;
+    }
+  }
+  .logo {
+    float: left;
+    max-width: 50px;
+    box-shadow: #FFF 0 0 4px;
+    background-color: #FFF;
+    border-radius: 100px;
+    height: 50px;
+    margin: 2px;
+  }
+}
+
+.users-panel {
+
+}
+
+.user-card {
+  border-bottom: 1px solid $smoke;
+  min-height: 50px;
+  .photo {
+    float: left;
+    max-width: 50px;
+  }
+  .name {
+    float: left;
+    margin-left: 5px;
+    font-size: 1.2rem;
+  }
+  .steps {
+    float: right;
+    margin-right: 5px;
+  }
+}
+.footer-container {
+  background-color: brand-green;
+}
