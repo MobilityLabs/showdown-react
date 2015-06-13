@@ -44,8 +44,13 @@ var Dashboard = React.createClass({
     return (
       <div className="large-12 columns">
         <DatePanel start_date={this.state.start_date} end_date={this.state.end_date} />
-        <CompaniesPanel companies={this.state.companies}/>
-        <UsersPanel users={this.state.users}/>
+        <div className="row">
+          <CompaniesPanel companies={this.state.companies}/>
+          <UsersPanel users={this.state.users}/>
+          <div className="twitter large-4 columns">
+            <h2><i className="fa fa-twitter"></i> Trash Talk</h2>
+          </div>
+        </div>
       </div>
     );
   }

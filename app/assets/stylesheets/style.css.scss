@@ -10,6 +10,10 @@ $brand-blue: #0260ff;
 $brand-green: #02ffa1;
 $brand-red: #ff0260;
 
+body {
+  background-color: $smoke;
+}
+
 a, a:hover, a:focus {
   color: #606060;
 }
@@ -34,13 +38,15 @@ h1{
   clear: both;
 }
 .panel-box {
-  box-shadow: 0px 2px 2px #898989;
+  padding: 0 10px;
 }
 .card {
+  box-shadow: 0px 2px 2px #898989;
   min-height: 60px;
   border-bottom: 1px solid $smoke;
+  background-color: $white;
 }
-.companies h2, .users h2 {
+.companies h2, .users h2, .twitter h2 {
   font-size: 1.4em;
 }
 .company {
