@@ -19,8 +19,20 @@ a, a:hover, a:focus {
 }
 
 .heading-container {
-  box-shadow: 0 2px 3px $smoke;
+  box-shadow: 0 2px 3px #E1E5E6;
   margin-bottom: 10px;
+  text-align: center;
+  height: 250px;
+  background-color: $black;
+}
+.heading-image {
+  background: url("showdown-header.jpg") #000 center top;
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: 0.2;
 }
 
 h1{
@@ -32,6 +44,8 @@ h1{
   font-size: 4em;
   padding-top: 0.5em;
   text-shadow: 0 2px 5px RGBA(255, 161, 2, .5);
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0 );
 
 }
 .clear {
