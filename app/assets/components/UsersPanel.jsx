@@ -3,7 +3,7 @@ var UsersPanel = React.createClass({
   render: function(){
     var users = this.props.users;
     return (
-      <div className="users-panel">
+      <div className="users-panel medium-4 columns">
         {users.map(function(user){
           return <UserCard key={user.lastname} user={user} />
         })}
