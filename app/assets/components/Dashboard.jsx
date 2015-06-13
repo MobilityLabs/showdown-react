@@ -27,6 +27,15 @@ var Dashboard = React.createClass({
         users.push(user);
       });
     });
+    function compare(a,b) {
+      if (a.steps > b.steps)
+        return -1;
+      if (a.steps < b.steps)
+        return 1;
+      return 0;
+    }
+
+    users.sort(compare);
     return users;
   },
   componentDidMount: function() {
@@ -43,7 +52,6 @@ var Dashboard = React.createClass({
   render: function(){
     return (
       <div className="large-12 columns">
-        <DatePanel start_date={this.state.start_date} end_date={this.state.end_date} />
         <div className="row">
           <CompaniesPanel companies={this.state.companies}/>
           <UsersPanel users={this.state.users}/>

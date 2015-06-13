@@ -15,7 +15,7 @@ body {
 }
 
 a, a:hover, a:focus {
-  color: #606060;
+  color: $brand;
 }
 
 .heading-container {
@@ -24,6 +24,12 @@ a, a:hover, a:focus {
   text-align: center;
   height: 250px;
   background-color: $black;
+  .powered {
+    color: $white;
+  }
+  .text-branded {
+    margin-left: 5px;
+  }
 }
 .heading-image {
   background: url("showdown-header.jpg") #000 center top;
