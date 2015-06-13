@@ -17,4 +17,12 @@ exports.serve = function(app, cssPaths) {
 
   mincer.logger.use(console)
   app.use('/assets', mincer.createServer(environment));
+
+  if(app.get("env") == "development") {
+    console.log("#### Dev mode: All assets are recompiled.")
+    app.use(function(req, res, next){
+      environment.expireIndex();
+      next();
+    });
+  }
 };
