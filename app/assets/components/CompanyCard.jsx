@@ -3,7 +3,7 @@ var CompanyCard = React.createClass({
   render: function(){
     var company = this.props.company;
     return (
-      <div className="company-card row">
+      <div className="company card row">
         <div className="inner">
           <div className="intro">
             <a className="url" href={company.url}>
