@@ -1,8 +1,15 @@
-var Dashboard = React.createClass({
+var TwitterPanel = React.createClass({
   componentDidMount: function() {
-    twttr.ready(function (twttr) {
-      twttr.widgets.load();
-    });
+    var component = this;
+    var js, link;
+    link = component.getDOMNode();
+    if (!component.initialized) {
+      component.initialized = true;
+      js = document.createElement("script");
+      js.id = "twitter-wjs";
+      js.src = "//platform.twitter.com/widgets.js";
+      return link.parentNode.appendChild(js);
+    }
   },
   render: function(){
     return (
