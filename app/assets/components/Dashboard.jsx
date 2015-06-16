@@ -45,7 +45,8 @@ var Dashboard = React.createClass({
           start_date  : data.start_date,
           end_date    : data.end_date,
           companies   : data.companies,
-          users       : component.getUsers(data.companies)
+          users       : component.getUsers(data.companies),
+          filters     : {}
         });
       });
   },
@@ -53,7 +54,7 @@ var Dashboard = React.createClass({
     return (
       <div className="large-12 columns">
         <div className="row">
-          <CompaniesPanel companies={this.state.companies}/>
+          <CompaniesPanel companies={this.state.companies} companyFilters={this.state.filters}/>
           <UsersPanel users={this.state.users}/>
           <div className="twitter large-4 columns">
             <h2><i className="fa fa-twitter"></i> Trash Talk</h2>

@@ -1,6 +1,4 @@
 var CompaniesPanel = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
-  companies: function(){return this.props.companies},
   render: function(){
     var companies = this.props.companies.slice(0,10),
         additionalCompanies = Math.max(this.props.companies.length - 10, 0);
