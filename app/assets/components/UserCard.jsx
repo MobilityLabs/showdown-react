@@ -1,5 +1,4 @@
 var UserCard = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
   render: function(){
     var user = this.props.user;
     return (

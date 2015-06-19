@@ -1,8 +1,14 @@
 var UsersPanel = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
+  visibleUsers: function(){
+    var component = this;
+    return _.reject(component.props.users, function(user){
+      return _.includes(component.props.companyFilters, user.company_id);
+    });
+  },
   render: function(){
-    var users = this.props.users.slice(0,10),
-        additionalUsers = Math.max(this.props.users.length - 10, 0);
+    var component = this,
+        users = component.visibleUsers().slice(0,10),
+        additionalUsers = Math.max(component.visibleUsers().length - 10, 0);
     
     return (
       <div className="users medium-4 columns">
