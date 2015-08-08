@@ -59,9 +59,7 @@ var Dashboard = React.createClass({
         <div className="row">
           <CompaniesPanel companies={this.state.companies} companyFilters={this.state.companyFilters}/>
           <UsersPanel users={this.state.users} companyFilters={this.state.companyFilters}/>
-          <div className="twitter large-4 columns">
-            <h2><i className="fa fa-twitter"></i> Trash Talk</h2>
-          </div>
+          <TwitterPanel />
         </div>
       </div>
     );
