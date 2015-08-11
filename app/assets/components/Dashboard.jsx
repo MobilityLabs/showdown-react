@@ -41,23 +41,31 @@ var Dashboard = React.createClass({
     users.sort(compare);
     return users;
   },
+  updateCompanyFilters: function(companyId, action){
+    var companyFilters = action === 'remove' ? _.without(this.state.companyFilters, companyId) : this.state.companyFilters.concat(companyId);
+    this.setState({
+      companyFilters: companyFilters
+    });
+  },
   componentDidMount: function() {
-      var component = this;
-      ShowdownAPI.fetchData().then(function(data) {
-        component.setState({
-          start_date  : data.start_date,
-          end_date    : data.end_date,
-          companies   : data.companies,
-          users       : component.getUsers(data.companies)
-        });
+    var component = this;
+    ShowdownAPI.fetchData().then(function(data) {
+      component.setState({
+        start_date  : data.start_date,
+        end_date    : data.end_date,
+        companies   : data.companies,
+        users       : component.getUsers(data.companies)
       });
+    });
+  },
+  componentDidUpdate: function(){
   },
   render: function(){
     return (
       <div className="large-12 columns">
-        <p>{this.state.companyFilters}</p>
+        <DatePanel start_date={this.state.start_date} end_date={this.state.end_date} />
         <div className="row">
-          <CompaniesPanel companies={this.state.companies} companyFilters={this.state.companyFilters}/>
+          <CompaniesPanel companies={this.state.companies} companyFilters={this.state.companyFilters} updateCompanyFilters={this.updateCompanyFilters}/>
           <UsersPanel users={this.state.users} companyFilters={this.state.companyFilters}/>
           <TwitterPanel />
         </div>

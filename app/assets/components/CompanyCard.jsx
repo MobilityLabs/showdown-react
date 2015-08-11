@@ -3,7 +3,12 @@ var CompanyCard = React.createClass({
     return {selected: false}
   },
   updateFilter: function(){
-    this.setState({selected: !this.state.selected});
+    var action = 'remove';
+    if(this.state.selected === false){
+      action = 'add';
+    }
+    this.props.updateCompanyFilters(this.props.company.id, action);
+    this.setState({selected: !this.state.selected})
   },
   render: function(){
     var company = this.props.company;

@@ -1,12 +1,38 @@
 var DatePanel = React.createClass({
   mixins: [React.addons.PureRenderMixin],
-  start_date: function(){return this.props.start_date},
-  end_date: function(){return this.props.end_date},
+  getInitialState: function(){
+    return {
+      start_date: this.props.start_date,
+      end_date: this.props.end_date
+    }
+  },
+  componentDidUpdate: function(){
+    this.setState({
+      start_date: this.props.start_date,
+      end_date: this.props.end_date
+    });
+  },
+  startDateString: function(){
+    var startDate,
+        component = this;
+    if (component.state.start_date){
+      startDate =  moment.unix(component.state.start_date);
+      return startDate.format('MMMM Do YYYY');
+    }
+  },
+  endDateString: function(){
+    var endDate,
+        component = this;
+    if (component.state.end_date){
+      endDate =  moment.unix(component.state.end_date);
+      return endDate.format('MMMM Do YYYY');
+    }
+  },
   render: function(){
     return (
       <div className="row">
-        <span>{this.start_date()}</span>
-        <span>{this.end_date()}</span>
+        <span>{this.startDateString()}</span>
+        <span>{this.endDateString()}</span>
       </div>
     );
   }

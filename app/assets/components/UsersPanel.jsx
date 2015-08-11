@@ -1,14 +1,17 @@
 var UsersPanel = React.createClass({
   visibleUsers: function(){
     var component = this;
-    return _.reject(component.props.users, function(user){
-      return _.includes(component.props.companyFilters, user.company_id);
+    return _.filter(component.props.users, function(user){
+      if(component.props.companyFilters.length > 0){
+        return _.includes(component.props.companyFilters, user.company_id);
+      } else {
+        return true;
+      }
     });
   },
   render: function(){
-    var component = this,
-        users = component.visibleUsers().slice(0,10),
-        additionalUsers = Math.max(component.visibleUsers().length - 10, 0);
+    var users = this.visibleUsers().slice(0,10),
+        additionalUsers = Math.max(this.props.users.length - users.length - 10, 0);
     
     return (
       <div className="users medium-4 columns">
@@ -21,7 +24,7 @@ var UsersPanel = React.createClass({
           </div>
         </div>
         <div>
-          {'+' + additionalUsers + ' others' }
+          +{additionalUsers} hidden competitors
         </div>
       </div>
     );

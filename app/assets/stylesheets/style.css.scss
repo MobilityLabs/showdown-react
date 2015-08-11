@@ -98,7 +98,7 @@ h1{
     margin: 2px;
   }
   &.selected {
-    background-color: darken($white, 10%)
+    background-color: $brand;
   }
 }
 
