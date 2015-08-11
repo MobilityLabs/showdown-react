@@ -70,11 +70,11 @@ h1{
   font-size: 1.4em;
 }
 .company {
+  background-color: $white;
   .inner {
   }
   .intro {
     padding: 2px;
-    background-color: $white;
     margin-bottom: 1px;
     position: relative;
     .url {
@@ -96,6 +96,9 @@ h1{
     border-radius: 100px;
     height: 50px;
     margin: 2px;
+  }
+  &.selected {
+    background-color: $brand;
   }
 }
 

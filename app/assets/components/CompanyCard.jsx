@@ -1,9 +1,26 @@
 var CompanyCard = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
+  getInitialState: function(){
+    return {selected: false}
+  },
+  updateFilter: function(){
+    var action = 'remove';
+    if(this.state.selected === false){
+      action = 'add';
+    }
+    this.props.updateCompanyFilters(this.props.company.id, action);
+    this.setState({selected: !this.state.selected})
+  },
   render: function(){
     var company = this.props.company;
+    var cx = React.addons.classSet;
+    var classes = cx({
+      'company': true,
+      'card': true,
+      'row': true,
+      'selected': this.state.selected
+    });
     return (
-      <div className="company card row">
+      <div className={classes} onClick={this.updateFilter}>
         <div className="inner">
           <div className="intro">
             <a className="url" href={company.url}>

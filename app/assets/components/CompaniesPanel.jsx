@@ -1,8 +1,7 @@
 var CompaniesPanel = React.createClass({
-  mixins: [React.addons.PureRenderMixin],
-  companies: function(){return this.props.companies},
   render: function(){
-    var companies = this.props.companies.slice(0,10),
+    var component = this,
+        companies = this.props.companies.slice(0,10),
         additionalCompanies = Math.max(this.props.companies.length - 10, 0);
     
     return (
@@ -11,7 +10,7 @@ var CompaniesPanel = React.createClass({
         <div className="panel-box row">
           <div className="large-12 columns">
             {this.props.companies.map(function(company){
-              return <CompanyCard key={company.id} company={company} />
+              return <CompanyCard key={company.id} company={company} updateCompanyFilters={component.props.updateCompanyFilters} />
             })}
           </div>
         </div>

@@ -15,7 +15,8 @@ var Dashboard = React.createClass({
           start_date: '',
           end_date: '',
           companies: [],
-          users: []
+          users: [],
+          companyFilters: []
       };
   },
   getUsers: function(companies) {
@@ -23,7 +24,9 @@ var Dashboard = React.createClass({
     var users = [];
     companies.forEach(function(company){
       company.users.forEach(function(user){
-        user.company = company.name;
+        user.company_name = company.name;
+        user.company_id = company.id;
+        user.company_logo = company.branding_logo_url
         users.push(user);
       });
     });
@@ -38,26 +41,33 @@ var Dashboard = React.createClass({
     users.sort(compare);
     return users;
   },
+  updateCompanyFilters: function(companyId, action){
+    var companyFilters = action === 'remove' ? _.without(this.state.companyFilters, companyId) : this.state.companyFilters.concat(companyId);
+    this.setState({
+      companyFilters: companyFilters
+    });
+  },
   componentDidMount: function() {
-      var component = this;
-      ShowdownAPI.fetchData().then(function(data) {
-        component.setState({
-          start_date  : data.start_date,
-          end_date    : data.end_date,
-          companies   : data.companies,
-          users       : component.getUsers(data.companies)
-        });
+    var component = this;
+    ShowdownAPI.fetchData().then(function(data) {
+      component.setState({
+        start_date  : data.start_date,
+        end_date    : data.end_date,
+        companies   : data.companies,
+        users       : component.getUsers(data.companies)
       });
+    });
+  },
+  componentDidUpdate: function(){
   },
   render: function(){
     return (
       <div className="large-12 columns">
+        <DatePanel start_date={this.state.start_date} end_date={this.state.end_date} />
         <div className="row">
-          <CompaniesPanel companies={this.state.companies}/>
-          <UsersPanel users={this.state.users}/>
-          <div className="twitter large-4 columns">
-            <h2><i className="fa fa-twitter"></i> Trash Talk</h2>
-          </div>
+          <CompaniesPanel companies={this.state.companies} companyFilters={this.state.companyFilters} updateCompanyFilters={this.updateCompanyFilters}/>
+          <UsersPanel users={this.state.users} companyFilters={this.state.companyFilters}/>
+          <TwitterPanel />
         </div>
       </div>
     );
